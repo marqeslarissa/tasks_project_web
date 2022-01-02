@@ -3,7 +3,7 @@ import * as S from "./styles";
 import logo from '../../assets/elipse4.png'
 import notifications from '../../assets/notifications.png'
 
-function Header() {
+function Header({lateCount, ClickNotification}) {
   return (
     <S.Container>
       <S.LeftSide>
@@ -14,10 +14,10 @@ function Header() {
         <span className="dividir"/>
         <a href="#">Nova Tarefa</a>
         <span className="dividir"/>
-        <a href="#" id="notifications">
+        <button onclick={ClickNotification}>
           <img src={notifications} alt="Notificação"/>
-          <span>5</span>
-        </a>
+          <span>{lateCount}</span>
+        </button>
       </ S.RightSide>
     </ S.Container>
   );

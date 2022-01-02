@@ -9,21 +9,33 @@ import TaskCard from "../../components/TaskCard";
 function Home() {
   const [filterActived, setFilterActived] = useState('all'); // recebe nome do estado e a funcao que atualiza o estado
   const [tasks, setTasks] = useState([]);
+  const [lateCount, setLateCount] = useState();
 
   async function loadTasks() {
     await api.get(`/task/filter/${filterActived}/11:11:11:11:11`)
       .then(response => {
         setTasks(response.data)
-        console.log(response.data)
       })
   }
+
+  async function lateVerify() {
+    await api.get(`/task/filter/late/11:11:11:11:11`)
+      .then(response => {
+        setLateCount(response.data.length)
+      })
+  }
+  function Notification(){
+    setFilterActived('late');
+  }
+
   useEffect(() => {  //useEffect é uma function distapada toda vez que a tela for carregada
     loadTasks(); //chama a funcao e carrega as informacoes do DB
+    lateVerify();
   }, [filterActived]) //toda vez que mudar o estado do filtro o loadtasks é carregado
 
   return (
     <S.Container>
-      <Header />
+      <Header lateCount={lateCount} clickNotification={Notification}/>
       <S.FilterArea>
         <button type="button" onClick={() => setFilterActived("all")}>
           <FilterCard title="Todos" actived={filterActived == "all"} />
@@ -42,12 +54,12 @@ function Home() {
         </button>
       </S.FilterArea>
       <S.Title>
-        <h3>TAREFAS</h3>
+        <h3>{filterActived == 'late' ? 'TAREFAS ATRASADAS' : 'TAREFAS'}</h3>
       </S.Title>
       <S.Content>
         {
           tasks.map(t => (
-            <TaskCard type={t.title} title={t.title} when={t.when}/>
+            <TaskCard type={t.title} title={t.title} when={t.when} />
           ))
         }
       </S.Content>
