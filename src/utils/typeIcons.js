@@ -1,22 +1,25 @@
-import iconArrow from "../assets/arrow.png";
-import iconCalendar from "../assets/calendar.png";
-import iconElipse4 from "../assets/elipse4.png";
-import iconEmail from "../assets/email.png";
-import iconfilter from "../assets/filter.png";
-import iconPlus from "../assets/icon-plus.png";
-import iconNotifications from "../assets/notifications.png";
-import iconUser from "../assets/user.png";
+//ICONES
+import iconDefault from '../assets/default.png';
+import iconFooteball from '../assets/footeball.png';
+import iconFood from '../assets/food.png';
+import iconJob from '../assets/job.png';
+import iconParty from '../assets/party.png';
+import iconStudy from '../assets/study.png';
+import iconShopping from '../assets/shopping.png';
+import iconTravel from '../assets/travel.png';
+import iconSport from '../assets/sport.png';
 
 const typeIcons = [
   null,
-  iconArrow,
-  iconCalendar,
-  iconElipse4,
-  iconEmail,
-  iconfilter,
-  iconPlus,
-  iconNotifications,
-  iconUser
+  iconDefault,
+  iconFooteball,
+  iconFood,
+  iconJob,
+  iconParty,
+  iconStudy,
+  iconShopping,
+  iconTravel,
+  iconSport
 ];
 
 export default typeIcons;
